@@ -17,12 +17,12 @@ namespace DemoWarehosue.ViewModels
 
         public MainViewModel()
         {
-            //allItems = await RepoWrapper.Instance.itemsRepository.GetAllAsync()
+            _ = fetchAllItems();
         }
 
-        void fetchAllItems()
+        async Task fetchAllItems()
         {
-
+            allItems = await RepoWrapper.Instance.itemsRepository.GetAllAsync();
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DemoWarehosue.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -13,5 +14,10 @@ namespace DemoWarehosue
     /// </summary>
     public partial class App : Application
     {
+        //public App()
+        //{
+        //    MainWindow w = new() { DataContext = new MainViewModel() };
+        //    w.Show();
+        //}
     }
 }

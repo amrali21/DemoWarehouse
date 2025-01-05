@@ -1,4 +1,5 @@
 ﻿using DemoWarehosue.Models.Repository;
+using DemoWarehosue.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,12 +25,14 @@ namespace DemoWarehosue
         public MainWindow()
         {
             InitializeComponent();
-            _ = test();
+            DataContext = new MainViewModel();
+            //_ = test();
         }
 
-        async Task test()
-        {
-            var t = await RepoWrapper.Instance.gategoryRepository.GetAllAsync();
-        }
+        
+        //async Task test()
+        //{
+        //    var t = await RepoWrapper.Instance.gategoryRepository.GetAllAsync();
+        //}
     }
 }
