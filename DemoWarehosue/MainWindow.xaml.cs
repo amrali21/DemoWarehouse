@@ -29,8 +29,7 @@ namespace DemoWarehosue
 
         async Task test()
         {
-            RepoWrapper rw = new RepoWrapper();
-            var t = await rw.gategoryRepository.GetAllAsync();
+            var t = await RepoWrapper.Instance.gategoryRepository.GetAllAsync();
         }
     }
 }

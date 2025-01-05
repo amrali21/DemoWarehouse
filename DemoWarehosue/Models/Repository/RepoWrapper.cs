@@ -10,12 +10,13 @@ namespace DemoWarehosue.Models.Repository
     {
         public ItemsRepository itemsRepository { get; set; }
         public CategoryRepository gategoryRepository { get; set; }
-        
-        public RepoWrapper()
-        {
+
+        private RepoWrapper() {
             itemsRepository = new ItemsRepository(DemoWarehouseContext.Instance);
             gategoryRepository = new CategoryRepository(DemoWarehouseContext.Instance);
         }
+
+        public static RepoWrapper Instance { get;  } = new();
 
     }
 }
