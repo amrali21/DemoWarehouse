@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using DemoWarehosue.Models.UI;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -15,6 +16,19 @@ namespace DemoWarehosue.Models.Repository
         public ItemsRepository(DbContext context/*, IMapper mapper*/) : base(context/*, mapper*/)
         {
             _context = context;
+        }
+
+        public async Task<List<ItemView>> GetItemsView()
+        {
+            return await (_context as DemoWarehouseContext).Items.Select(i => new
+            ItemView
+            {
+                Id = i.Id,
+                Name = i.Name,
+                Category = i.Category.Name,
+                StockQuantity = i.StockQuantity,
+                LastUpdated = i.LastUpdated
+            }).ToListAsync();
         }
     }
 }

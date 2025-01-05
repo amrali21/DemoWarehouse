@@ -1,5 +1,6 @@
 ﻿using DemoWarehosue.Models;
 using DemoWarehosue.Models.Repository;
+using DemoWarehosue.Models.UI;
 using SpectroBridge.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -11,9 +12,8 @@ namespace DemoWarehosue.ViewModels
 {
     class MainViewModel: BaseNotifyPropertyChanged
     {
-        // model for list body
-        // 
-        public List<Item> allItems { get; set; }
+        private List<ItemView> _allItems = new List<ItemView>();
+        public List<ItemView> allItems { get => _allItems; set { _allItems = value; OnPropertyChanged(); } }
 
         public MainViewModel()
         {
@@ -22,7 +22,15 @@ namespace DemoWarehosue.ViewModels
 
         async Task fetchAllItems()
         {
-            allItems = await RepoWrapper.Instance.itemsRepository.GetAllAsync();
+
+            try
+            {
+                allItems = await RepoWrapper.Instance.itemsRepository.GetItemsView();
+
+            }catch(Exception e)
+            {
+
+            }
         }
     }
 }

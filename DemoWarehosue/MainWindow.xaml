@@ -10,24 +10,22 @@
         <TabControl>
             <TabItem Header="TabItem">
                 <Grid Background="#FFE5E5E5">
-                    <DataGrid Margin="159,10,203,217" ItemsSource="{Binding allItems, Mode=OneWay}">
-                    <DataGrid.Columns>
-                        <DataGridTextColumn Width="*" Header="Name" Binding="{Binding Name}"/>
-                        <DataGridTextColumn Width="*" Header="Stock" Binding="{Binding StockQuantity}"/>
-                        <DataGridTextColumn Width="*" Header="Last Updated" Binding="{Binding LastUpdated}"/>
-                        <!--<DataGridTextColumn Width="auto" MinWidth="40" Header="DE" Binding="{Binding DE, StringFormat=n2}"/>
-                        <DataGridTextColumn Width="auto" MinWidth="40" Header="Shape" Binding="{Binding Shape, StringFormat=n2}"/>
-                        <DataGridTextColumn Width="auto" MinWidth="40" Header="DC" Binding="{Binding DC, StringFormat=n2}"/>-->
-                    </DataGrid.Columns>
+                    <DataGrid Margin="159,10,203,217" ItemsSource="{Binding allItems, Mode=OneWay}" AutoGenerateColumns="False">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Width="*" Header="Name" Binding="{Binding Name}"/>
+                            <DataGridTextColumn Width="*" Header="Category" Binding="{Binding Category}"/>
+                            <DataGridTextColumn Width="*" Header="Stock" Binding="{Binding StockQuantity}"/>
+                            <DataGridTextColumn Width="*" Header="Last Updated" Binding="{Binding LastUpdated}"/>
+                        </DataGrid.Columns>
 
                     </DataGrid>
-
                 </Grid>
             </TabItem>
             <TabItem Header="TabItem">
                 <Grid Background="#FFE5E5E5">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="14*"/>
+                        <ColumnDefinition Width="9*"/>
+                        <ColumnDefinition Width="5*"/>
                         <ColumnDefinition Width="13*"/>
                         <ColumnDefinition Width="55*"/>
                         <ColumnDefinition Width="712*"/>

@@ -1,6 +1,4 @@
-﻿using DemoWarehosue.Models.Repository;
-using DemoWarehosue.ViewModels;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,16 +13,15 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace DemoWarehosue
+namespace DemoWarehosue.Views
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for InputForm.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class InputForm : UserControl
     {
-        public MainWindow()
+        public InputForm()
         {
-            DataContext = new MainViewModel();
             InitializeComponent();
         }
     }

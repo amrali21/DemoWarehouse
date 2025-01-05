@@ -14,10 +14,5 @@ namespace DemoWarehosue
     /// </summary>
     public partial class App : Application
     {
-        //public App()
-        //{
-        //    MainWindow w = new() { DataContext = new MainViewModel() };
-        //    w.Show();
-        //}
     }
 }
