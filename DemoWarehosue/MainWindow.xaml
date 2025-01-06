@@ -3,14 +3,19 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:DemoWarehosue"
+        xmlns:local="clr-namespace:DemoWarehosue" xmlns:views="clr-namespace:DemoWarehosue.Views"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <TabControl>
             <TabItem Header="TabItem">
                 <Grid Background="#FFE5E5E5">
-                    <DataGrid Margin="159,10,203,217" ItemsSource="{Binding allItems, Mode=OneWay}" AutoGenerateColumns="False">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="7*"/>
+                        <ColumnDefinition Width="17*"/>
+                        <ColumnDefinition Width="770*"/>
+                    </Grid.ColumnDefinitions>
+                    <DataGrid Margin="135,10,203,217" ItemsSource="{Binding allItems, Mode=OneWay}" AutoGenerateColumns="False" Grid.Column="2">
                         <DataGrid.Columns>
                             <DataGridTextColumn Width="*" Header="Name" Binding="{Binding Name}"/>
                             <DataGridTextColumn Width="*" Header="Category" Binding="{Binding Category}"/>
@@ -26,10 +31,10 @@
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="9*"/>
                         <ColumnDefinition Width="5*"/>
-                        <ColumnDefinition Width="13*"/>
-                        <ColumnDefinition Width="55*"/>
-                        <ColumnDefinition Width="712*"/>
                     </Grid.ColumnDefinitions>
+
+                    <views:InputForm DisplayText="hi"/>
+                    <!--<Label Content="Label" Background="Aqua"/>-->
                 </Grid>
             </TabItem>
         </TabControl>

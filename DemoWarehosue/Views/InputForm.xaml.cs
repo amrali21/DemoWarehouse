@@ -23,6 +23,27 @@ namespace DemoWarehosue.Views
         public InputForm()
         {
             InitializeComponent();
+            
         }
+        //props:
+        // id,
+        // name,
+        // category,
+        // last updated
+
+        public static readonly DependencyProperty DisplayTextProperty =
+            DependencyProperty.Register("DisplayText", typeof(string), typeof(InputForm), new PropertyMetadata("Default Text"));
+
+        public string DisplayText
+        {
+            get => (string)GetValue(DisplayTextProperty);
+            set => SetValue(DisplayTextProperty, value);
+        }
+
+        //we need a function sets these controls that can be called from outside
+        //can we 
+
+        // what binding does UserControl take?
+        //
     }
 }
