@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DemoWarehosue.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -34,10 +35,19 @@ namespace DemoWarehosue.Views
         public static readonly DependencyProperty DisplayTextProperty =
             DependencyProperty.Register("DisplayText", typeof(string), typeof(InputForm), new PropertyMetadata("Default Text"));
 
+        int count = 0;
         public string DisplayText
         {
             get => (string)GetValue(DisplayTextProperty);
             set => SetValue(DisplayTextProperty, value);
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            DisplayText = "text value changed from within ";
+            //(DataContext as MainViewModel).DisplayText = "text changed from within " + ++count;
+            //SetValue(InputForm.DisplayTextProperty, "My Text, " + ++count);
+
         }
 
         //we need a function sets these controls that can be called from outside

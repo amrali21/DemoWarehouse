@@ -27,5 +27,12 @@ namespace DemoWarehosue
             DataContext = new MainViewModel();
             InitializeComponent();
         }
+
+        int count = 0;
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            (DataContext as MainViewModel).DisplayText = "text changed from parent " + ++count;
+        }
     }
 }

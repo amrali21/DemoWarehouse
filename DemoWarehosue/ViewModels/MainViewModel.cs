@@ -15,6 +15,8 @@ namespace DemoWarehosue.ViewModels
         private List<ItemView> _allItems = new List<ItemView>();
         public List<ItemView> allItems { get => _allItems; set { _allItems = value; OnPropertyChanged(); } }
 
+        string _displayText = "test from main";
+        public string DisplayText { get => _displayText ; set { _displayText = value; OnPropertyChanged(); } } 
         public MainViewModel()
         {
             _ = fetchAllItems();

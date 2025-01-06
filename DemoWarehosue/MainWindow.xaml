@@ -33,9 +33,12 @@
                         <ColumnDefinition Width="5*"/>
                     </Grid.ColumnDefinitions>
 
-                    <views:InputForm DisplayText="hi"/>
+                    <views:InputForm DisplayText="{Binding DisplayText, Mode=TwoWay}"/>
+                    <Button Grid.Column="2" Content="Button Outside" Click="Button_Click" />
+
                     <!--<Label Content="Label" Background="Aqua"/>-->
                 </Grid>
+                
             </TabItem>
         </TabControl>
 

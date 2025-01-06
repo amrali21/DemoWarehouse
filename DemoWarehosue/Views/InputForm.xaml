@@ -7,8 +7,13 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        
-        <Label Content="{Binding DisplayText}"   Background="Beige"/>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="9*"/>
+            <ColumnDefinition Width="5*"/>
+        </Grid.ColumnDefinitions>
+
+        <Label Grid.Column="1" Content="{Binding DisplayText, RelativeSource={RelativeSource AncestorType=UserControl}}"   Background="Beige"/>
+        <Button Grid.Column="0" Content="Button inside" Click="Button_Click"/>
+
     </Grid>
 </UserControl>
