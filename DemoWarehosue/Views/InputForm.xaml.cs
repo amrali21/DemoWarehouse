@@ -1,4 +1,7 @@
-﻿using DemoWarehosue.ViewModels;
+﻿using DemoWarehosue.Models;
+using DemoWarehosue.Models.Repository;
+using DemoWarehosue.Models.UI;
+using DemoWarehosue.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,34 +29,65 @@ namespace DemoWarehosue.Views
             InitializeComponent();
             
         }
-        //props:
-        // id,
-        // name,
-        // category,
-        // last updated
 
-        public static readonly DependencyProperty DisplayTextProperty =
-            DependencyProperty.Register("DisplayText", typeof(string), typeof(InputForm), new PropertyMetadata("Default Text"));
+        public static readonly DependencyProperty MyItemProperty =
+            DependencyProperty.Register("MyItem", typeof(PutItem), typeof(InputForm), new PropertyMetadata(new PutItem()));
 
-        int count = 0;
-        public string DisplayText
+        public static readonly DependencyProperty EditModeProperty =
+            DependencyProperty.Register("EditMode", typeof(bool), typeof(InputForm), new PropertyMetadata(default(bool)));
+
+        public PutItem MyItem
         {
-            get => (string)GetValue(DisplayTextProperty);
-            set => SetValue(DisplayTextProperty, value);
+            get => (PutItem)GetValue(MyItemProperty);
+            set => SetValue(MyItemProperty, value);
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        public bool? EditMode
         {
-            DisplayText = "text value changed from within ";
-            //(DataContext as MainViewModel).DisplayText = "text changed from within " + ++count;
-            //SetValue(InputForm.DisplayTextProperty, "My Text, " + ++count);
-
+            get => (bool)GetValue(EditModeProperty);
+            set => SetValue(EditModeProperty, value);
         }
 
-        //we need a function sets these controls that can be called from outside
-        //can we 
+        private async void Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (EditMode != false)
+            {
+                await  RepoWrapper.Instance.itemsRepository.UpdateAsync(
+                    new Item { 
+                        Id = MyItem.Id,
+                        Name = MyItem.Name, 
+                        CategoryId = MyItem.CategoryId, 
+                        StockQuantity = MyItem.StockQuantity,
+                        LastUpdated = DateTime.Now
+                    });
 
-        // what binding does UserControl take?
-        //
+                // reset
+                CancelEdit();
+                // exit edit mode
+            }
+            else {
+                await RepoWrapper.Instance.itemsRepository.AddAsync(
+                    new Item
+                    {
+                        Id = MyItem.Id,
+                        Name = MyItem.Name,
+                        CategoryId = MyItem.CategoryId,
+                        StockQuantity = MyItem.StockQuantity,
+                        LastUpdated = DateTime.Now
+                    });
+
+                Reset();
+                // reset
+            }
+        }
+
+        private void Reset() =>
+            MyItem = new PutItem();
+
+        private void CancelEdit()
+        {
+            EditMode = false;
+            Reset();
+        }
     }
 }
