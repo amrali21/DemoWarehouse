@@ -20,8 +20,30 @@
             <Label Content="Name"/>
             <TextBox TextWrapping="Wrap" Text="{Binding MyItem.Name, Mode=TwoWay, RelativeSource={RelativeSource AncestorType=UserControl}}" Width="120" HorizontalAlignment="Left"/>
 
-            <Label Content="Category"/>
-            <ComboBox Width="120" HorizontalAlignment="Left"/>
+            <Label Content="{Binding TestProp, RelativeSource={RelativeSource AncestorType=UserControl}}" Width="120"/>
+            <Label Content="Category" Width="120"/>
+            <ComboBox  Grid.Column="1" 
+                       ItemsSource="{Binding tests, Mode=TwoWay, RelativeSource={RelativeSource AncestorType=UserControl}}">
+                <!--SelectedItem="{Binding SelectedCategory, Mode=TwoWay, RelativeSource={RelativeSource AncestorType=UserControl}}">-->
+                <!--<ComboBox.ItemTemplate>
+                    <ItemContainerTemplate >
+                        <TextBlock Text="{Binding Path=Name}" />
+                    </ItemContainerTemplate>
+                </ComboBox.ItemTemplate>-->
+            </ComboBox>
+            <ComboBox  Grid.Column="1" 
+                       ItemsSource="{Binding Categories, Mode=TwoWay, RelativeSource={RelativeSource AncestorType=UserControl}}">
+                <!--SelectedItem="{Binding SelectedCategory, Mode=TwoWay, RelativeSource={RelativeSource AncestorType=UserControl}}">-->
+                <ComboBox.ItemTemplate>
+                    <ItemContainerTemplate >
+                        <TextBlock Text="hi" />
+                    </ItemContainerTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+
+
+
+            <ComboBox Width="120" HorizontalAlignment="Left"  />
 
             <Label Content="Stock"/>
             <TextBox TextWrapping="Wrap" Text="{Binding MyItem.StockQuantity, Mode=TwoWay, RelativeSource={RelativeSource AncestorType=UserControl}}" Width="120" HorizontalAlignment="Left"/>
