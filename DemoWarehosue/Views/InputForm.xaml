@@ -23,7 +23,7 @@
             <Label Content="Category" Width="120" HorizontalAlignment="Left"/>
             <ComboBox  Grid.Column="1" Width="120"
                        ItemsSource="{Binding Categories, Mode=TwoWay, RelativeSource={RelativeSource AncestorType=UserControl}}" HorizontalAlignment="Left"
-                       SelectedItem="{Binding SelectedCategory, Mode=TwoWay, RelativeSource={RelativeSource AncestorType=UserControl}}">
+                        SelectedValue="{Binding MyItem.Id, Mode=TwoWay, RelativeSource={RelativeSource AncestorType=UserControl}}" SelectedValuePath="Id">
                 <ComboBox.ItemTemplate>
                     
                     <ItemContainerTemplate >

@@ -67,7 +67,7 @@ namespace DemoWarehosue.Views
         public PutItem MyItem { get => (PutItem)GetValue(MyItemProperty); set => SetValue(MyItemProperty, value); }
         public bool? EditMode { get => (bool)GetValue(EditModeProperty); set => SetValue(EditModeProperty, value); }
         public List<CategoryView> Categories3 { get => (List<CategoryView>)GetValue(CategoriesProperty); set => SetValue(CategoriesProperty, value); }
-        public CategoryView SelectedCategory { get => (CategoryView)GetValue(SelectedCategoryProperty); set => SetValue(SelectedCategoryProperty, value); }
+        public CategoryView SelectedCategory { get => (CategoryView)GetValue(SelectedCategoryProperty); set { SetValue(SelectedCategoryProperty, value); MyItem.CategoryId = value.Id; } }
 
 
         private async void Button_Click(object sender, RoutedEventArgs e)
