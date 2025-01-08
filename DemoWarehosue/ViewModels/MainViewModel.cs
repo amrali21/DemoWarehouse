@@ -10,17 +10,18 @@ using System.Threading.Tasks;
 
 namespace DemoWarehosue.ViewModels
 {
-    class MainViewModel: BaseNotifyPropertyChanged
+    class MainViewModel : BaseNotifyPropertyChanged
     {
         private List<ItemView> _allItems = new List<ItemView>();
         public List<ItemView> allItems { get => _allItems; set { _allItems = value; OnPropertyChanged(); } }
 
 
-        string _displayText = "test from main";
-        public string DisplayText { get => _displayText ; set { _displayText = value; OnPropertyChanged(); } }
-
         PutItem currentItem = new();
-        public PutItem CurrentItem{ get => currentItem; set { currentItem = value; OnPropertyChanged(typeof(PutItem).Name); } }
+        public PutItem CurrentItem { get => currentItem; set { currentItem = value; OnPropertyChanged(nameof(CurrentItem)); } }
+
+
+        bool _EditMode = false;
+        public bool EditMode { get => _EditMode; set { _EditMode = value; OnPropertyChanged(); } }
 
         public MainViewModel()
         {
@@ -34,10 +35,24 @@ namespace DemoWarehosue.ViewModels
             {
                 allItems = await RepoWrapper.Instance.itemsRepository.GetItemsView();
 
-            }catch(Exception e)
+            }
+            catch (Exception e)
             {
 
             }
+        }
+
+        public void StartEditMode(int Id)
+        {
+            EditMode = true;
+            CurrentItem = allItems.Where(i => i.Id == Id)
+                .Select(i => new PutItem
+            {
+                Id = i.Id,
+                Name = i.Name,
+                CategoryId = i.CategoryId,
+                StockQuantity = i.StockQuantity
+            }).First();
         }
     }
 }
