@@ -38,7 +38,8 @@ namespace DemoWarehosue.Views
             try
             {
                 await Task.Delay(1000);
-                Categories = await RepoWrapper.Instance.gategoryRepository.GetAllAsync();
+                //Categories = await RepoWrapper.Instance.gategoryRepository.GetAllAsync();
+                Categories3 = await RepoWrapper.Instance.gategoryRepository.GetCategoriesView();
             }
             catch (Exception ex) 
             { 
@@ -46,22 +47,8 @@ namespace DemoWarehosue.Views
             }
         }
 
-
-        string _TestProp = "test label content";
-        public string TestProp { get => _TestProp; set { _TestProp = value; OnPropertyChanged(nameof(TestProp)); } }
-
-
-        List<string> _tests = new List<string> { "hi", "hi2", "hi3" };
-        public List<string> tests { get => _tests; set { _tests = value; OnPropertyChanged(nameof(tests)); } }
-
-
         List<Category> _Categories;
         public List<Category> Categories { get => _Categories; set { _Categories = value; OnPropertyChanged(nameof(Categories)); } }
-
-
-        Category _SelectedCategory;
-        Category SelectedCategory { get => _SelectedCategory; set { _SelectedCategory = value; OnPropertyChanged(nameof(SelectedCategory)); } }
-
 
 
         public static readonly DependencyProperty MyItemProperty =
@@ -70,17 +57,18 @@ namespace DemoWarehosue.Views
         public static readonly DependencyProperty EditModeProperty =
             DependencyProperty.Register("EditMode", typeof(bool), typeof(InputForm), new PropertyMetadata(default(bool)));
 
-        public PutItem MyItem
-        {
-            get => (PutItem)GetValue(MyItemProperty);
-            set => SetValue(MyItemProperty, value);
-        }
+        public static readonly DependencyProperty CategoriesProperty =
+            DependencyProperty.Register("Categories", typeof(List<CategoryView>), typeof(InputForm), new PropertyMetadata(new List<CategoryView>()));
 
-        public bool? EditMode
-        {
-            get => (bool)GetValue(EditModeProperty);
-            set => SetValue(EditModeProperty, value);
-        }
+        public static readonly DependencyProperty SelectedCategoryProperty =
+            DependencyProperty.Register("SelectedCategory", typeof(CategoryView), typeof(InputForm), new PropertyMetadata(new CategoryView()));
+
+
+        public PutItem MyItem { get => (PutItem)GetValue(MyItemProperty); set => SetValue(MyItemProperty, value); }
+        public bool? EditMode { get => (bool)GetValue(EditModeProperty); set => SetValue(EditModeProperty, value); }
+        public List<CategoryView> Categories3 { get => (List<CategoryView>)GetValue(CategoriesProperty); set => SetValue(CategoriesProperty, value); }
+        public CategoryView SelectedCategory { get => (CategoryView)GetValue(SelectedCategoryProperty); set => SetValue(SelectedCategoryProperty, value); }
+
 
         private async void Button_Click(object sender, RoutedEventArgs e)
         {
