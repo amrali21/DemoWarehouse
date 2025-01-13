@@ -24,7 +24,7 @@
                             <DataGridTemplateColumn Header="*">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
-                                        <Button Content="Edit" Click="Button_Click_1" Tag="{Binding Id}" />
+                                        <Button Content="Edit cmd" Command="{Binding EditCommand}"  Tag="{Binding Id}" />
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>

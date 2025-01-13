@@ -23,10 +23,20 @@ namespace DemoWarehosue.ViewModels
         bool _EditMode = false;
         public bool EditMode { get => _EditMode; set { _EditMode = value; OnPropertyChanged(); } }
 
+        Command _EditCommand;
+        public Command EditCommand { get => _EditCommand; set { _EditCommand = value; OnPropertyChanged(nameof(EditCommand)); } }
+
         public MainViewModel()
         {
             _ = fetchAllItems();
+            EditCommand = new((o) =>
+            {
+                StartEditMode((int)o);
+
+            }, (o) => false);
         }
+
+        // what action do we want to execute? same logic
 
         async Task fetchAllItems()
         {
