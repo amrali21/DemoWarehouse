@@ -26,6 +26,7 @@ namespace DemoWarehosue.Models.Repository
                 Id = i.Id,
                 Name = i.Name,
                 Category = i.Category.Name,
+                CategoryId = i.Category.Id,
                 StockQuantity = i.StockQuantity,
                 LastUpdated = i.LastUpdated
             }).ToListAsync();

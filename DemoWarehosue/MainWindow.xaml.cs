@@ -32,7 +32,15 @@ namespace DemoWarehosue
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            (DataContext as MainViewModel).DisplayText = "text changed from parent " + ++count;
+            //(DataContext as MainViewModel).DisplayText = "text changed from parent " + ++count;
         }
+
+        //private void Button_Click_1(object sender, RoutedEventArgs e)
+        //{
+        //    var Id = (int)((Button)sender).Tag;
+        //    (DataContext as MainViewModel).StartEditMode(Id);
+        //    //(DataContext as MainViewModel).
+        //    // what to do with this id? launch the edit mode.
+        //}
     }
 }

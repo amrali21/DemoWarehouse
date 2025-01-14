@@ -47,9 +47,6 @@ namespace DemoWarehosue.Views
             }
         }
 
-        List<Category> _Categories;
-        public List<Category> Categories { get => _Categories; set { _Categories = value; OnPropertyChanged(nameof(Categories)); } }
-
 
         public static readonly DependencyProperty MyItemProperty =
             DependencyProperty.Register("MyItem", typeof(PutItem), typeof(InputForm), new PropertyMetadata(new PutItem()));
@@ -91,7 +88,6 @@ namespace DemoWarehosue.Views
                 await RepoWrapper.Instance.itemsRepository.AddAsync(
                     new Item
                     {
-                        Id = MyItem.Id,
                         Name = MyItem.Name,
                         CategoryId = MyItem.CategoryId,
                         StockQuantity = MyItem.StockQuantity,
@@ -112,11 +108,5 @@ namespace DemoWarehosue.Views
             Reset();
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        protected void OnPropertyChanged([CallerMemberName] string propertyName = "")
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
     }
 }

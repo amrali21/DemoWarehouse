@@ -21,6 +21,14 @@
                             <DataGridTextColumn Width="*" Header="Category" Binding="{Binding Category}"/>
                             <DataGridTextColumn Width="*" Header="Stock" Binding="{Binding StockQuantity}"/>
                             <DataGridTextColumn Width="*" Header="Last Updated" Binding="{Binding LastUpdated}"/>
+                            <DataGridTemplateColumn Header="*">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button Content="Edit cmd" Command="{Binding EditCommand}"  Tag="{Binding Id}" />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            
                         </DataGrid.Columns>
 
                     </DataGrid>
@@ -32,10 +40,10 @@
                         <ColumnDefinition Width="9*"/>
                         <ColumnDefinition Width="5*"/>
                     </Grid.ColumnDefinitions>
-
+                    
                     <!--<views:InputForm MyItem="{Binding null, Mode=TwoWay}"/>-->
                     <!--<views:InputForm EditMode="False"  MyItem="{Binding CurrentItem, Mode=TwoWay}"/>-->
-                    <views:InputForm />
+                    <views:InputForm MyItem="{Binding CurrentItem, Mode=TwoWay}" EditMode="{Binding EditMode, Mode=TwoWay}"/>
 
                     <Button Grid.Column="2" Content="Button Outside" Click="Button_Click" />
 
