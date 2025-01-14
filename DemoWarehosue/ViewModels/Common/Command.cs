@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace DemoWarehosue.ViewModels
+namespace DemoWarehosue.ViewModels.Common
 {
     public class Command : ICommand
     {
@@ -48,7 +48,7 @@ namespace DemoWarehosue.ViewModels
         public bool CanExecute(object parameter)
         {
             bool result = true;
-            Func<object, bool> canExecuteHandler = this.canExecute;
+            Func<object, bool> canExecuteHandler = canExecute;
             if (canExecuteHandler != null)
             {
                 result = canExecuteHandler(parameter);
@@ -59,7 +59,7 @@ namespace DemoWarehosue.ViewModels
 
         public void RaiseCanExecuteChanged()
         {
-            EventHandler handler = this.CanExecuteChanged;
+            EventHandler handler = CanExecuteChanged;
             if (handler != null)
             {
                 handler(this, new EventArgs());
@@ -68,7 +68,7 @@ namespace DemoWarehosue.ViewModels
 
         public void Execute(object parameter)
         {
-            this.executeAction(parameter);
+            executeAction(parameter);
         }
 
         #endregion

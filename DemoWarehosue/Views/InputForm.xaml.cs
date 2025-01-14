@@ -2,6 +2,7 @@
 using DemoWarehosue.Models.Repository;
 using DemoWarehosue.Models.UI;
 using DemoWarehosue.ViewModels;
+using SpectroBridge;
 using SpectroBridge.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -29,10 +30,12 @@ namespace DemoWarehosue.Views
             try
             {
                 Categories3 = await wp.gategoryRepository.GetCategoriesView();
+
             }
             catch (Exception ex) 
-            { 
-                
+            {
+                SafeMessageBox.Show($"Error fetching category data", "Loading error", MessageBoxButton.OK,
+                    MessageBoxImage.Error);
             }
         }
 

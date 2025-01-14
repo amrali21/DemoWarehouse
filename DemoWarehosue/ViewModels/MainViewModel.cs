@@ -1,12 +1,15 @@
 ﻿using DemoWarehosue.Models;
 using DemoWarehosue.Models.Repository;
 using DemoWarehosue.Models.UI;
+using DemoWarehosue.ViewModels.Common;
+using SpectroBridge;
 using SpectroBridge.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace DemoWarehosue.ViewModels
 {
@@ -52,7 +55,8 @@ namespace DemoWarehosue.ViewModels
             }
             catch (Exception e)
             {
-
+                SafeMessageBox.Show($"{e.Message}", "Error loading items data", MessageBoxButton.OK,
+                    MessageBoxImage.Error);
             }
         }
 

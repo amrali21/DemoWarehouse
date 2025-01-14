@@ -13,6 +13,5 @@ namespace DemoWarehosue.Models.Repository
             itemsRepository = new ItemsRepository(_context);
             gategoryRepository = new CategoryRepository(_context);
         }
-
     }
 }
