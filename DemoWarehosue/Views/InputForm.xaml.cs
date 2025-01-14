@@ -34,7 +34,7 @@ namespace DemoWarehosue.Views
             }
             catch (Exception ex) 
             {
-                SafeMessageBox.Show($"Error fetching category data", "Loading error", MessageBoxButton.OK,
+                SafeMessageBox.Show($"{ex.Message}", "Error fetching category data", MessageBoxButton.OK,
                     MessageBoxImage.Error);
             }
         }
