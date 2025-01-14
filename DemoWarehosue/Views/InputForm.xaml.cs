@@ -62,6 +62,15 @@ namespace DemoWarehosue.Views
 
         private async void Button_Click(object sender, RoutedEventArgs e)
         {
+            if(MyItem.Name == "" || MyItem.CategoryId == 0 || MyItem.StockQuantity == null)
+            {
+                SafeMessageBox.Show($"Please fill all missing data", "Warning", MessageBoxButton.OK,
+                    MessageBoxImage.Warning); 
+                
+                return;
+            }
+
+
             if (EditMode != false)
             {
                 await  wp.itemsRepository.UpdateAsync(
