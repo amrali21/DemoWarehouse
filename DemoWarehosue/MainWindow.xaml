@@ -26,15 +26,12 @@
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
                                         <Button Content="Edit cmd" Command="{Binding DataContext.EditCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type DataGrid}} }" CommandParameter="{Binding Id}"  />
-                                
+
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
-                            
                         </DataGrid.Columns>
-
                     </DataGrid>
-                    
                 </Grid>
 
             </TabItem>
@@ -48,6 +45,5 @@
                 </Grid>
             </TabItem>
         </TabControl>
-
     </Grid>
 </Window>
