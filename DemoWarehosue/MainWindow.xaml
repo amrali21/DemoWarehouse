@@ -44,15 +44,8 @@
                         <ColumnDefinition Width="9*"/>
                         <ColumnDefinition Width="5*"/>
                     </Grid.ColumnDefinitions>
-                    
-                    <!--<views:InputForm MyItem="{Binding null, Mode=TwoWay}"/>-->
-                    <!--<views:InputForm EditMode="False"  MyItem="{Binding CurrentItem, Mode=TwoWay}"/>-->
                     <views:InputForm MyItem="{Binding CurrentItem, Mode=TwoWay}" EditMode="{Binding EditMode, Mode=TwoWay}"/>
-
-                    <!--<Button Grid.Column="2" Content="Button Outside" Click="Button_Click" />-->
-
                 </Grid>
-                
             </TabItem>
         </TabControl>
 

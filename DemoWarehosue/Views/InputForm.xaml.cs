@@ -30,6 +30,8 @@ namespace DemoWarehosue.Views
         public InputForm()
         {
             InitializeComponent();
+            this.wp = new RepoWrapper();
+
             _ = loadData();
         }
 
@@ -37,9 +39,7 @@ namespace DemoWarehosue.Views
         {
             try
             {
-                await Task.Delay(1000);
-                //Categories = await RepoWrapper.Instance.gategoryRepository.GetAllAsync();
-                Categories3 = await RepoWrapper.Instance.gategoryRepository.GetCategoriesView();
+                Categories3 = await wp.gategoryRepository.GetCategoriesView();
             }
             catch (Exception ex) 
             { 
@@ -61,6 +61,7 @@ namespace DemoWarehosue.Views
             DependencyProperty.Register("SelectedCategory", typeof(CategoryView), typeof(InputForm), new PropertyMetadata(new CategoryView()));
 
 
+        public RepoWrapper wp { get; set; }
         public PutItem MyItem { get => (PutItem)GetValue(MyItemProperty); set => SetValue(MyItemProperty, value); }
         public bool? EditMode { get => (bool)GetValue(EditModeProperty); set => SetValue(EditModeProperty, value); }
         public List<CategoryView> Categories3 { get => (List<CategoryView>)GetValue(CategoriesProperty); set => SetValue(CategoriesProperty, value); }
@@ -71,7 +72,7 @@ namespace DemoWarehosue.Views
         {
             if (EditMode != false)
             {
-                await  RepoWrapper.Instance.itemsRepository.UpdateAsync(
+                await  wp.itemsRepository.UpdateAsync(
                     new Item { 
                         Id = MyItem.Id,
                         Name = MyItem.Name, 
@@ -85,7 +86,7 @@ namespace DemoWarehosue.Views
                 // exit edit mode
             }
             else {
-                await RepoWrapper.Instance.itemsRepository.AddAsync(
+                await wp.itemsRepository.AddAsync(
                     new Item
                     {
                         Name = MyItem.Name,

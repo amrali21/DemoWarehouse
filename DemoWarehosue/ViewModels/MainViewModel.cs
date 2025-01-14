@@ -47,8 +47,8 @@ namespace DemoWarehosue.ViewModels
 
             try
             {
-                allItems = await RepoWrapper.Instance.itemsRepository.GetItemsView();
-
+                RepoWrapper wp = new();
+                allItems = await wp.itemsRepository.GetItemsView();
             }
             catch (Exception e)
             {

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,12 +12,12 @@ namespace DemoWarehosue.Models.Repository
         public ItemsRepository itemsRepository { get; set; }
         public CategoryRepository gategoryRepository { get; set; }
 
-        private RepoWrapper() {
-            itemsRepository = new ItemsRepository(DemoWarehouseContext.Instance);
-            gategoryRepository = new CategoryRepository(DemoWarehouseContext.Instance);
-        }
+        public RepoWrapper() {
+            DbContext _context = new DemoWarehouseContext();
 
-        public static RepoWrapper Instance { get;  } = new();
+            itemsRepository = new ItemsRepository(_context);
+            gategoryRepository = new CategoryRepository(_context);
+        }
 
     }
 }

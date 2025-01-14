@@ -8,17 +8,14 @@ namespace DemoWarehosue.Models
 {
     public partial class DemoWarehouseContext : DbContext
     {
-        private DemoWarehouseContext()
-        {
-        }
 
         public DemoWarehouseContext(DbContextOptions<DemoWarehouseContext> options)
             : base(options)
         {
         }
 
-        public static DemoWarehouseContext Instance { get; } = new();
-
+        public  DemoWarehouseContext()
+        {}
 
         public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<Item> Items { get; set; }
