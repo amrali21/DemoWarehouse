@@ -15,6 +15,7 @@
                         <ColumnDefinition Width="17*"/>
                         <ColumnDefinition Width="770*"/>
                     </Grid.ColumnDefinitions>
+
                     <DataGrid Margin="135,10,203,217" ItemsSource="{Binding allItems, Mode=OneWay}" AutoGenerateColumns="False" Grid.Column="2">
                         <DataGrid.Columns>
                             <DataGridTextColumn Width="*" Header="Name" Binding="{Binding Name}"/>
@@ -24,7 +25,8 @@
                             <DataGridTemplateColumn Header="*">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
-                                        <Button Content="Edit cmd" Command="{Binding EditCommand}"  Tag="{Binding Id}" />
+                                        <Button Content="Edit cmd" Command="{Binding DataContext.EditCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type DataGrid}} }" CommandParameter="{Binding Id}"  />
+                                
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
@@ -32,7 +34,9 @@
                         </DataGrid.Columns>
 
                     </DataGrid>
+                    
                 </Grid>
+
             </TabItem>
             <TabItem Header="TabItem">
                 <Grid Background="#FFE5E5E5">
@@ -45,7 +49,7 @@
                     <!--<views:InputForm EditMode="False"  MyItem="{Binding CurrentItem, Mode=TwoWay}"/>-->
                     <views:InputForm MyItem="{Binding CurrentItem, Mode=TwoWay}" EditMode="{Binding EditMode, Mode=TwoWay}"/>
 
-                    <Button Grid.Column="2" Content="Button Outside" Click="Button_Click" />
+                    <!--<Button Grid.Column="2" Content="Button Outside" Click="Button_Click" />-->
 
                 </Grid>
                 

@@ -23,8 +23,12 @@ namespace DemoWarehosue.ViewModels
         bool _EditMode = false;
         public bool EditMode { get => _EditMode; set { _EditMode = value; OnPropertyChanged(); } }
 
+
+
         Command _EditCommand;
-        public Command EditCommand { get => _EditCommand; set { _EditCommand = value; OnPropertyChanged(nameof(EditCommand)); } }
+        public Command EditCommand { get => _EditCommand; set { 
+                _EditCommand = value;
+                OnPropertyChanged(nameof(EditCommand)); } }
 
         public MainViewModel()
         {
@@ -33,7 +37,7 @@ namespace DemoWarehosue.ViewModels
             {
                 StartEditMode((int)o);
 
-            }, (o) => false);
+            }, (o) => true);
         }
 
         // what action do we want to execute? same logic
